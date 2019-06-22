@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/tannin-app-client/precache-manifest.b9518ca3c254ad1c6c9aad28ca123424.js"
+  "/tannin-app-client/precache-manifest.8295c48f5cf532898eaf0baec14b2a39.js"
 );
 
 self.addEventListener('message', (event) => {
