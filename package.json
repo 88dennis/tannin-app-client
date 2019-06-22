@@ -1,6 +1,6 @@
 {
   "name": "tannin-app-client",
-  "homepage": "https://tanninwineapp.herokuapp.com/",
+  "homepage": "https://tanninwineclient.herokuapp.com/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
