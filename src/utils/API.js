@@ -104,6 +104,7 @@ export default {
 
 
     //HEROKU ROUTES DMS
+    
   signUpSubmit: function (userInfo) {
     console.log(userInfo);
     return axios.post("https://tanninwineapp.herokuapp.com/api/user/signup", userInfo);
