@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import "./style.css";
 
-function SavedWine({ name, id, hideShow, showMe, wineName, wineTemp, wineTannin, wineSweetness, wineSummary, winePronunciation, winePrimaryFlavors, winePairings, wineDecant, wineGlassType, wineBody, wineAlcohol, wineAgeability, wineAcidity, wineVarietal, wineCountry, wineRegion }) {
+function SavedWine({ name, id, hideShow, goToQuizPage, showMe, wineName, wineTemp, wineTannin, wineSweetness, wineSummary, winePronunciation, winePrimaryFlavors, winePairings, wineDecant, wineGlassType, wineBody, wineAlcohol, wineAgeability, wineAcidity, wineVarietal, wineCountry, wineRegion }) {
 
   return (
     <div>
@@ -15,16 +15,18 @@ function SavedWine({ name, id, hideShow, showMe, wineName, wineTemp, wineTannin,
             <div className="winecollectionname1">
               {/* <div className="fontitalicsmall">{name}</div> */}
               <div><button className="winesavenamebtn1" onClick={() => hideShow(id)}>{name}</button></div>
-
               <div>
 
-                <div><Link
+                {/* <div><Link
                   className={window.location.pathname === "/quizpage" ? "nav-link active" : "nav-link"}
                   // to="/quiz"
                   to={{ pathname: "/quiz", state: { wineId: id, wineName: name } }}
                 ><button className="quizpagebutton"><i className="fas fa-feather-alt"></i>
                   </button>
-                </Link></div>
+                </Link></div> */}
+              <button onClick={() => goToQuizPage(id)} className="quizpagebutton"><i className="fas fa-feather-alt"></i>
+                  </button>
+
 
               </div>
             </div>

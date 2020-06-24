@@ -51,12 +51,12 @@ class SignupLogin extends Component {
             if (response.status === 200) {
               if (response.data.isAdmin) {
                 this.setState({
-                  redirectTo: '/admin'
+                  redirectTo: '/admin/' + response.data._id + "/userpage"
                 });
               }
               else {
                 this.setState({
-                  redirectTo: "/employeepage"
+                  redirectTo: "/employeepage/" + response.data._id + "/employee"
                 });
               }
             }
@@ -90,18 +90,20 @@ class SignupLogin extends Component {
     const loginInfor = { email: this.state.loginemail, password: this.state.loginpassword }
     API.logIn(loginInfor).then(response => {
       console.log("USER OBJ: ", response);
+
       if (response.status === 200) {
         // update the state
         if (response.data.isAdmin) {
           this.setState({
             // loggedIn: true,
             // user: response.data.user,
-            redirectTo: '/admin'
+            redirectTo: '/admin/' + response.data._id + "/userpage"
+
           });
         }
         else {
           this.setState({
-            redirectTo: "/employeepage"
+            redirectTo: "/employeepage/" + response.data._id + "/employee"
           });
         }
       }

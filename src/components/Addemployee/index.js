@@ -2,12 +2,12 @@ import React from "react";
 // import { Link } from "react-router-dom";
 import "./style.css";
 
-function Addemployee({ showMe2, hideShow2, name, lastName, email,password, handleAddEmployeeChange, handleAddEmpolyeeFormSubmit }) {
+function Addemployee({ showMe2, homeButton, name, lastName, email,password, handleAddEmployeeChange, handleAddEmpolyeeFormSubmit }) {
   return (
 
     <div>
 
-    {showMe2 ?
+    {/* {showMe2 ? */}
       <div className="overlay1">
         <div className="wrapper1">
         <div className="wrapper2">
@@ -26,7 +26,7 @@ function Addemployee({ showMe2, hideShow2, name, lastName, email,password, handl
         <div>
         <input
           className="form-control"
-          id=""
+          id="firstName"
           type="text"
           value={name}
           // placeholder="First Name"
@@ -42,7 +42,7 @@ function Addemployee({ showMe2, hideShow2, name, lastName, email,password, handl
         <div>
         <input
           className="formcontrol"
-          id=""
+          id="lastName"
           type="text"
           value={lastName}
           // placeholder="Last Name"
@@ -60,7 +60,7 @@ function Addemployee({ showMe2, hideShow2, name, lastName, email,password, handl
         <div>
         <input
           className="formcontrol"
-          id=""
+          id="email"
           type="email"
           value={email}
           // placeholder="Email Address"
@@ -76,7 +76,7 @@ function Addemployee({ showMe2, hideShow2, name, lastName, email,password, handl
         <div>
         <input
           className="formcontrol"
-          id=""
+          id="password"
           type="password"
           value={password}
           // placeholder="Password"
@@ -97,7 +97,9 @@ function Addemployee({ showMe2, hideShow2, name, lastName, email,password, handl
         >
           Submit
         </button>
-        <button className="btnwrap1addemp" onClick={() => hideShow2()}>Close</button>
+        {/* <button className="btnwrap1addemp" onClick={() => hideShow2()}>Close</button> */}
+        <button className="btnwrap1addemp" onClick={() => homeButton()}>Close</button>
+
       </div>
     </form>
     </div>
@@ -118,8 +120,8 @@ function Addemployee({ showMe2, hideShow2, name, lastName, email,password, handl
     </div>
       </div>
       </div>
-      :null
-    }
+      {/* :null
+    } */}
 
     </div>
   );

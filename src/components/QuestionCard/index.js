@@ -28,7 +28,9 @@ class QuestionCard extends React.Component {
     };
 
     answers = this.props.answers;
+    // ans = console.log(this.answers)
     falses = this.answers ? this.answers.splice(this.answers.indexOf(this.props[this.props.category]), 1) : null;
+    // ans = console.log(this.falses)
     shuffledFalses = this.answers ? this.props.shuffle(this.answers) : null;
     selections = this.answers ? (this.answers.slice(0, 3)) : null;
     dummThing = this.selections ? (this.selections.push(this.props[`${this.props.category}`])) : null;
@@ -82,13 +84,13 @@ class QuestionCard extends React.Component {
                     <h2 className="questionName">{this.props.question}{this.props.wineName}?</h2>
                     {/* If false answers are available, render button for each answer, else render a submit (specifically for the flavors question) */}
                     <div>
-                        {this.selections ? this.selections.map(answer => {
+                        {this.selections ? this.selections.map((answer, index) => {
                             return (
                                 answer === this.props[`${this.props.category}`] ?
-                                    <div>
+                                    <div key={index}>
                                         <button className="question" disabled={this.state.disabled} onClick={this.handleBtnClick}
                                             value="1">{answer}</button><br />
-                                    </div> : <div>
+                                    </div> : <div key={index}>
                                         <button className="question" disabled={this.state.disabled} onClick={this.handleBtnClick}
                                             value="0">{answer}</button><br />
                                     </div>

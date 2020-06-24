@@ -5,7 +5,6 @@
     }
     
     .overlayRestowine {
-    
         position: absolute;
         width: 100%;
         height: 100vh;
@@ -13,13 +12,12 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: rgb(54, 53, 53, .1);
+        /* background: rgb(54, 53, 53, .1); */
         z-index: 2;
         cursor: pointer;
         transition-delay: 10s;
         transition-timing-function: ease-in;
         overflow: hidden;
-        
       }
     
       .winecollectiondiv1 {

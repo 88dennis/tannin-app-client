@@ -5,20 +5,23 @@ import Header2 from "../components/Header2";
 import Empinfo from "../components/Empinfo";
 import { Container } from "../components/Grid";
 // import questions from "../questions.json";
-// // importing the wine template for testing purposes 
+// // importing the wine template for testing purposes
 // import wineData from "../franciacorta.json"
-import ScoreSummary from "../components/Scores"
+import ScoreSummary from "../components/ScoreSummary";
 import { List } from "../components/List";
 // import { Link } from "react-router-dom";
 import "./style.css";
+import Quiz from "./Quiz";
 
 
 class EmployeePage extends Component {
+
+
   state = {
     wineCollections: [],
     scoreCollection: [],
 
-    showMeSummary: false,
+    showMeSummary: true,
     showMe6: false,
     showMe4: false,
     showMe: false,
@@ -40,7 +43,6 @@ class EmployeePage extends Component {
     empUserLastName: "",
     empUserRestaurantName: "",
     empuserEmail: "",
-
     wineId: "",
     wineName: "",
     wineAcidity: "",
@@ -59,93 +61,101 @@ class EmployeePage extends Component {
     wineTannin: "",
     wineTemp: "",
     wineVarietal: [],
-
-
     winewiththisscore: "",
     newScores: [],
     scoreId: "",
-    testmessage: ""
-
+    testmessage: "",
+    currentPage: "EmployeePage",
+    wineData:""
   };
 
-  hideShowSummary = id => {
-    const newState = { ...this.state }
-    newState.empuseId = newState.user._id
-    newState.newScores = newState.scoreCollection
+  componentDidMount() {
 
 
-    newState.showMeSummary = !newState.showMeSummary
+
+    let userId = {
+      userId: this.props.match.params.userId,
+    };
+
+    let curPage = {
+      currentPage: "employee",
+    };
+    this.getUser(userId, curPage);
+    console.log(this.props.match.params);
+  }
+  hideShowSummary = (id) => {
+
+    const newState = { ...this.state };
+
+// alert(this.state.user._id)
+
+    newState.empuseId = newState.user._id;
+    newState.newScores = newState.scoreCollection;
+    newState.showMeSummary = !newState.showMeSummary;
+    newState.currentPage = "ScoreSummary"
+
     this.setState(newState);
     // console.log('HEHEHEHEHEHE')
     // console.log(newState.newScores)
   };
 
-
-  componentDidMount() {
-    this.getUser()
-  }
-
-  getUser = () => {
-
-
-    API.getUser().then(response => {
-      console.log("LOGGED IN USER: ", response)
-      if (!!response.data.user) {
-        console.log('THERE IS A USER');
-        console.log(response.data.user.scores);
+  getUser = (userId, curPage) => {
+    API.getUser(userId, curPage).then((response) => {
+      console.log("LOGGED IN USER: ", response.data);
+      if (response.data) {
+        console.log("THERE IS A USER");
+        console.log(response.data);
         this.setState({
           loggedIn: true,
-          user: response.data.user,
-          scoreCollection: response.data.user.scores,
+          user: response.data,
         });
-        this.getSavedWine()
-      }
-      else {
+        this.getSavedWine();
+      } else {
         this.setState({
           loggedIn: false,
-          user: null
+          user: null,
         });
         this.props.history.push(`/`);
       }
     });
-  }
+  };
 
   getSavedWine = () => {
     console.log("////////////////");
     console.log(this.state.user.restaurantId);
     console.log("////////////////");
-    console.log(this.state.user.scores);
-    console.log(this.state.wineCollections);
-
     const admin = { restaurantId: this.state.user.restaurantId };
     API.getSavedWine(admin)
-      .then(res => {
+      .then((res) => {
+        // console.log(res.data);
+        console.log("DEDADAEDAEDAEDAEDDA");
+        console.log(res.data._id);
+        console.log(res.data);
 
+        // console.log(res.data[0]);
+        console.log("SAVESTAFF");
+        console.log("SAVESTAFF");
         this.setState({
+          employeesList: res.data.Employees,
           wineCollections: res.data.Wines,
-
-        })
-
-        this.showScore()
+        });
       })
       .catch(() =>
         this.setState({
-          message: "Wine not available"
+          message: "Wine not available",
         })
       );
   };
 
-  handleInputChange = event => {
+  handleInputChange = (event) => {
     const { name, value } = event.target;
     this.setState({
-      [name]: value
-
+      [name]: value,
     });
   };
-  handleLogout = event => {
-
-    console.log('logging out');
-    API.logOut().then(response => {
+  handleLogout = (event) => {
+    console.log("logging out");
+    API.logOut().then((response) => {
       console.log(response.data.msg);
       this.setState({
         loggedIn: false,
@@ -154,54 +164,48 @@ class EmployeePage extends Component {
       this.props.history.push(`/`);
       console.log(this.state);
     });
-  }
+  };
 
-  hideShow = id => {
-    const newState = { ...this.state }
-    const wine = this.state.wineCollections.find(wine => wine._id === id);
-    newState.wineId = id
-    newState.wineName = wine.name
-    newState.wineAcidity = wine.acidity
-    newState.wineAgeability = wine.ageability
-    newState.wineAlcohol = wine.alcohol
-    newState.wineBody = wine.body
-    newState.wineCountry = wine.country
-    newState.wineDecant = wine.decant
-    newState.wineGlassType = wine.glassType
-    newState.winePairings = wine.pairings
-    newState.winePrimaryFlavors = wine.primaryFlavors
-    newState.winePronunciation = wine.pronunciation
-    newState.wineRegion = wine.region
-    newState.wineSummary = wine.summary
-    newState.wineSweetness = wine.sweetness
-    newState.wineTannin = wine.tannin
-    newState.wineTemp = wine.temp
-    newState.wineVarietal = wine.varietal
-    newState.showMe = !newState.showMe
-
-
+  hideShow = (id) => {
+    const newState = { ...this.state };
+    const wine = this.state.wineCollections.find((wine) => wine._id === id);
+    newState.wineId = id;
+    newState.wineName = wine.name;
+    newState.wineAcidity = wine.acidity;
+    newState.wineAgeability = wine.ageability;
+    newState.wineAlcohol = wine.alcohol;
+    newState.wineBody = wine.body;
+    newState.wineCountry = wine.country;
+    newState.wineDecant = wine.decant;
+    newState.wineGlassType = wine.glassType;
+    newState.winePairings = wine.pairings;
+    newState.winePrimaryFlavors = wine.primaryFlavors;
+    newState.winePronunciation = wine.pronunciation;
+    newState.wineRegion = wine.region;
+    newState.wineSummary = wine.summary;
+    newState.wineSweetness = wine.sweetness;
+    newState.wineTannin = wine.tannin;
+    newState.wineTemp = wine.temp;
+    newState.wineVarietal = wine.varietal;
+    newState.showMe = !newState.showMe;
     this.setState(newState);
-  }
+  };
 
-
-
-  hideShow4 = id => {
-    const newState = { ...this.state }
-    newState.greet = "Welcome!"
-    newState.empuseId = newState.user._id
-    newState.empUserFirstName = newState.user.firstName
-    newState.empUserLastName = newState.user.lastName
-    newState.empUserRestaurantName = newState.user.restaurantName
-    newState.empuseEmail = newState.user.email
+  hideShow4 = (id) => {
+    const newState = { ...this.state };
+    newState.greet = "Welcome!";
+    newState.empuseId = newState.user._id;
+    newState.empUserFirstName = newState.user.firstName;
+    newState.empUserLastName = newState.user.lastName;
+    newState.empUserRestaurantName = newState.user.restaurantName;
+    newState.empuseEmail = newState.user.email;
     console.log(newState.empuseId);
-    newState.showMe4 = !newState.showMe4
+    newState.showMe4 = !newState.showMe4;
     this.setState(newState);
-  }
-
+  };
 
   // showScore = winename => {
   //   const newState = { ...this.state }
-
 
   //   const score = this.state.scoreCollection.find(score => score.wine === winename);
 
@@ -222,152 +226,191 @@ class EmployeePage extends Component {
   //   console.log(newState.newScore)
   // }
   // ----------
+  homeButton =() =>{
+    // window.location.reload(false)
+    // this.componentDidMount();
+    this.setState({
+      currentPage: "EmployeePage"
+    })
+  }
 
-  render() {
-    return (
+  homeButtonWithReload =() =>{
+    window.location.reload(false)
+    // this.componentDidMount();
+    this.setState({
+      currentPage: "EmployeePage"
+    })
+  }
 
-      <Container>
+  goToQuizPage = (id) => {
+    const newState = { ...this.state }
+    const wine = this.state.wineCollections.find((wine) => wine._id === id);
+    newState.wineData = wine;
+    newState.currentPage =  "QuizPage";
+    this.setState(newState);
+  } 
 
-
-
-        <div className="emppagemainwrap">
-          <Empinfo
-            useId={this.state.useId}
-            useEmail={this.state.empuseEmail}
-            usefirstName={this.state.empUserFirstName}
-            uselastName={this.state.empUserLastName}
-            userestaurantName={this.state.empUserRestaurantName}
-            showMe4={this.state.showMe4}
-            hideShow4={this.hideShow4}
-            handleLogout={this.handleLogout}
-            greet={this.state.greet}
-          ></Empinfo>
-
-
-
-
-
-          {/* <Jumbotron>
+  renderPage = () => {
+    if (this.state.currentPage === "EmployeePage") {
+      return (
+        <>
+          <Container>
+            <div className="emppagemainwrap">
+              <Empinfo
+                useId={this.state.useId}
+                useEmail={this.state.empuseEmail}
+                usefirstName={this.state.empUserFirstName}
+                uselastName={this.state.empUserLastName}
+                userestaurantName={this.state.empUserRestaurantName}
+                showMe4={this.state.showMe4}
+                hideShow4={this.hideShow4}
+                handleLogout={this.handleLogout}
+                greet={this.state.greet}
+              ></Empinfo>
+              {/* <Jumbotron>
           <h1 className="text-center">
             <strong>ADMIN PAGE WINE COLLECTIONS & EMPLOYEE LIST</strong>
           </h1>
           <h2 className="text-center">Search for wine collections and Add Employees</h2>
         </Jumbotron> */}
 
-
-          <div className="employeepagewrapper">
-
-            <div className="emppagecol">
-              <div className="empwelcomebtnwrap">
-                <button
-                  onClick={() => this.hideShow4()}
-                  className="empwelcomebtn"
-                >
-                  <Header2
-                    user={this.state.user}
-                  />
-                </button>
-
-
-              </div>
-              <div className="quizsummarybtnwrap">
-                <button
-                  onClick={() => this.hideShowSummary()}
-                  className="quizsummarybtn"
-                >
-                  Test Scores
-                </button>
-              </div>
-              <div className="wineTitleWrap">
-                <div className="wineTitleWrap1">
-
-                  {/* <div><Link
+              <div className="employeepagewrapper">
+                <div className="emppagecol">
+                  <div className="empwelcomebtnwrap">
+                    <button
+                      onClick={() => this.hideShow4()}
+                      className="empwelcomebtn"
+                    >
+                      <Header2 user={this.state.user} />
+                    </button>
+                  </div>
+                  <div className="quizsummarybtnwrap">
+                    <button
+                      onClick={() => this.hideShowSummary()}
+                      className="quizsummarybtn"
+                    >
+                      Test Scores
+                    </button>
+                  </div>
+                  <div className="wineTitleWrap">
+                    <div className="wineTitleWrap1">
+                      {/* <div><Link
             className={window.location.pathname === "/wines" ? "nav-link active" : "nav-link"} 
             to="/wines"
           ><button>
           
             </button>
               </Link></div> */}
+                    </div>
+                  </div>
+
+                  <div className="emppageColWrap">
+                    <div className="emppageColWrap1">
+                      {this.state.wineCollections.length ? (
+                        <List>
+                          {this.state.wineCollections.map((wine) => (
+                            <SavedWine
+                              // showScore = {this.showScore}
+                              // newScore = {this.state.newScore}
+                              key={wine._id}
+                              id={wine._id}
+                              name={wine.name}
+                              ageability={this.state.ageability}
+                              // handleWineDelete={this.handleWineDelete}
+                              showMe={this.state.showMe}
+                              hideShow={this.hideShow}
+                              wineName={this.state.wineName}
+                              wineId={this.state.wineId}
+                              wineacidity={this.state.wineacidity}
+                              wineAgeability={this.state.wineAgeability}
+                              wineAlcohol={this.state.wineAlcohol}
+                              wineBody={this.state.wineBody}
+                              wineDecant={this.state.wineDecant}
+                              wineGlassType={this.state.wineGlassType}
+                              winePairings={this.state.winePairings}
+                              winePrimaryFlavors={this.state.winePrimaryFlavors}
+                              winePronunciation={this.state.winePronunciation}
+                              wineRegion={this.state.wineRegion}
+                              wineSummary={this.state.wineSummary}
+                              wineSweetness={this.state.wineSweetness}
+                              wineTannin={this.state.wineTannin}
+                              wineTemp={this.state.wineTemp}
+                              wineVarietal={this.state.wineVarietal}
+                              goToQuizPage={this.goToQuizPage}
+                            ></SavedWine>
+                          ))}
+                        </List>
+                      ) : (
+                        <h2 className="text-center"> </h2>
+                      )}
+                    </div>
+                  </div>
+                  <div>
+                    {/* {this.state.scoreCollection.length ? (
+                      <List>
+                        {this.state.scoreCollection.map((score) => (
+                          <ScoreSummary
+                            key={score._id}
+                            wine={score.wine}
+                            score={score.score}
+                            newScores={this.state.newScores}
+                            hideShowSummary={this.hideShowSummary}
+                            showMeSummary={this.state.showMeSummary}
+                          />
+                        ))}
+                      </List>
+                    ) : (
+                      <h2 className="text-center"> no scores</h2>
+                    )} */}
+                  </div>
                 </div>
+                {/* -----------------EMPLOYEES COLUMN------------------- */}
               </div>
-
-
-              <div className="emppageColWrap">
-                <div className="emppageColWrap1">
-
-
-
-                  {this.state.wineCollections.length ? (
-                    <List>
-                      {this.state.wineCollections.map(wine => (
-
-                        <SavedWine
-                          // showScore = {this.showScore}
-                          // newScore = {this.state.newScore}
-                          key={wine._id}
-                          id={wine._id}
-                          name={wine.name}
-                          ageability={this.state.ageability}
-                          // handleWineDelete={this.handleWineDelete}
-                          hideShowQuiz={this.hideShowQuiz}
-                          showMe={this.state.showMe}
-                          hideShow={this.hideShow}
-                          wineName={this.state.wineName}
-                          wineId={this.state.wineId}
-                          wineacidity={this.state.wineacidity}
-                          wineAgeability={this.state.wineAgeability}
-                          wineAlcohol={this.state.wineAlcohol}
-                          wineBody={this.state.wineBody}
-                          wineDecant={this.state.wineDecant}
-                          wineGlassType={this.state.wineGlassType}
-                          winePairings={this.state.winePairings}
-                          winePrimaryFlavors={this.state.winePrimaryFlavors}
-                          winePronunciation={this.state.winePronunciation}
-                          wineRegion={this.state.wineRegion}
-                          wineSummary={this.state.wineSummary}
-                          wineSweetness={this.state.wineSweetness}
-                          wineTannin={this.state.wineTannin}
-                          wineTemp={this.state.wineTemp}
-                          wineVarietal={this.state.wineVarietal}
-                        >
-
-                        </SavedWine>
-
-                      ))}
-                    </List>
-                  ) : (
-                      <h2 className="text-center"> </h2>
-                    )}
-                </div>
-              </div>
-
-
-              <div>
-                {this.state.scoreCollection.length ? (
-                  <List>
-                    {this.state.scoreCollection.map(score => (
-                      <ScoreSummary
-                        key={score._id}
-                        wine={score.wine}
-                        score={score.score}
-                        newScores={this.state.newScores}
-                        hideShowSummary={this.hideShowSummary}
-                        showMeSummary={this.state.showMeSummary}
-                      />
-                    ))}
-                  </List>
-                ) : (
-                    <h2 className="text-center"> </h2>
-                  )}
-              </div>
+              {/* <Footer /> */}
             </div>
-            {/* -----------------EMPLOYEES COLUMN------------------- */}
+          </Container>
+        </>
+      );
+    } else if (this.state.currentPage === "QuizPage") {
+      return (
+        <>
+          <Quiz
+              user={this.state.user}
+              homeButtonWithReload={this.homeButtonWithReload}
+              wineData={this.state.wineData}
+          />;
+        </>
+      );
+    } else if (this.state.currentPage === "ScoreSummary") {
+      return (
+        <>
 
-          </div>
-          {/* <Footer /> */}
-        </div>
-      </Container>
-    );
+        <ScoreSummary 
+        scores={this.state.user.scores}
+        homeButton={this.homeButton}
+        />
+                      {/* <List>
+                        {this.state.scoreCollection.map((score) => (
+                          <ScoreSummary
+                            key={score._id}
+                            wine={score.wine}
+                            score={score.score}
+                            newScores={this.state.newScores}
+                            hideShowSummary={this.hideShowSummary}
+                            showMeSummary={this.state.showMeSummary}
+                            homeButton={this.homeButton}
+                          />
+                        ))}
+                      </List> */}
+                    
+        </>
+      );
+    }
+  };
+
+  render() {
+
+    return <>{this.renderPage()}</>;
   }
 }
 
