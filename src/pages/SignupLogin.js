@@ -35,46 +35,67 @@ class SignupLogin extends Component {
 
     });
   }
-
+  
   handleSignupFormSubmit = async event => {
     event.preventDefault();
     const { restaurant, firstName, lastName, email, password } = this.state;
-    if (firstName && lastName && restaurant && email && password) {
-      const userInfo = { firstName, lastName, restaurant, email, password }
-      const loginInfor = { email, password }
-      // console.log(userInfo);
-      API.signUpSubmit(userInfo).then(response => {
-        if (!response.data.error) {
-          console.log('youre good')
-          API.logIn(loginInfor).then(response => {
-            console.log("USER OBJ: ", response);
-            if (response.status === 200) {
-              if (response.data.isAdmin) {
-                this.setState({
-                  redirectTo: '/admin/' + response.data._id + "/userpage"
+    const userInfo = { firstName, lastName, restaurant, email, password }
+    const loginInfor = { email, password }
+    let objVals = Object.values(userInfo)
+    console.log(objVals);
+    let checker = function(objValsArr) {
+      for (let i = 0; i < objValsArr.length; i++) {
+        if(objValsArr[i].trim() === "") {
+          return false;
+        }
+      }
+      return true;
+     }
+
+     if(checker(objVals)) {
+      if (firstName && lastName && restaurant && email && password) {
+        // console.log(checker(objVals));
+            // console.log(userInfo);
+           
+            API.signUpSubmit(userInfo).then(response => {
+              if (!response.data.error) {
+                console.log('youre good')
+                API.logIn(loginInfor).then(response => {
+                  console.log("USER OBJ: ", response);
+                  if (response.status === 200) {
+                    if (response.data.isAdmin) {
+                      this.setState({
+                        redirectTo: '/admin/' + response.data._id + "/userpage"
+                      });
+                    }
+                    else {
+                      this.setState({
+                        redirectTo: "/employeepage/" + response.data._id + "/employee"
+                      });
+                    }
+                  }
+                }).catch(err => {
+                  console.log(err)
                 });
               }
               else {
                 this.setState({
-                  redirectTo: "/employeepage/" + response.data._id + "/employee"
-                });
+                  redirectTo: null,
+                  loggedIn: false,
+                  signupMessage: "Email already exist, please log in"
+                })
+                console.log(response.data.error)
               }
-            }
-          }).catch(err => {
-            console.log(err)
-          });
+            })
+          }
+     } else {
+       alert("Complete the Fields")
+     }
 
-        }
-        else {
-          this.setState({
-            redirectTo: null,
-            loggedIn: false,
-            signupMessage: "Email already exist, please log in"
-          })
-          console.log(response.data.error)
-        }
-      })
-    }
+    
+
+
+
   }
 
   handleLoginInputChange = event => {
@@ -88,9 +109,23 @@ class SignupLogin extends Component {
   handleLoginFormSubmit = event => {
     event.preventDefault();
     const loginInfor = { email: this.state.loginemail, password: this.state.loginpassword }
+
+    let objVals = Object.values(loginInfor)
+    console.log(objVals);
+    let checker = function(objValsArr) {
+      for (let i = 0; i < objValsArr.length; i++) {
+        if(objValsArr[i].trim() === "") {
+          return false;
+        }
+      }
+      return true;
+     }
+  console.log(checker(objVals));
+
+  if(checker(objVals)) {
+   
     API.logIn(loginInfor).then(response => {
       console.log("USER OBJ: ", response);
-
       if (response.status === 200) {
         // update the state
         if (response.data.isAdmin) {
@@ -120,6 +155,9 @@ class SignupLogin extends Component {
       })
 
     });
+      } else {
+        alert("Complete the Fields")
+      }
   }
 
   render() {

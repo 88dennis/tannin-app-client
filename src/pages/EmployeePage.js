@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import SavedWine from "../components/SavedWine";
 import API from "../utils/API";
-import Header2 from "../components/Header2";
+// import Header2 from "../components/Header2";
 import Empinfo from "../components/Empinfo";
 import { Container } from "../components/Grid";
 // import questions from "../questions.json";
@@ -107,7 +107,7 @@ class EmployeePage extends Component {
         console.log(response.data);
         this.setState({
           loggedIn: true,
-          user: response.data,
+          user: response.data,  
         });
         this.getSavedWine();
       } else {
@@ -255,9 +255,12 @@ class EmployeePage extends Component {
       return (
         <>
           <Container>
+          <div className="btnLogoutWrapper">
+      <button className="btn1logout" onClick={() => this.handleLogout()}>Logout <i className="fas fa-sign-out-alt"></i></button>
+            </div>
             <div className="emppagemainwrap">
               <Empinfo
-                useId={this.state.useId}
+                useId={this.state.user === null ? "" : this.state.user._id}
                 useEmail={this.state.empuseEmail}
                 usefirstName={this.state.empUserFirstName}
                 uselastName={this.state.empUserLastName}
@@ -277,11 +280,18 @@ class EmployeePage extends Component {
               <div className="employeepagewrapper">
                 <div className="emppagecol">
                   <div className="empwelcomebtnwrap">
-                    <button
+                    {/* <button
                       onClick={() => this.hideShow4()}
                       className="empwelcomebtn"
                     >
                       <Header2 user={this.state.user} />
+                    </button> */}
+
+                    <button
+                      onClick={() => this.hideShow4()}
+                      className="empwelcomebtn"
+                    >
+                    {this.state.user === null ? "welcome" : this.state.user.firstName}
                     </button>
                   </div>
                   <div className="quizsummarybtnwrap">
@@ -289,7 +299,7 @@ class EmployeePage extends Component {
                       onClick={() => this.hideShowSummary()}
                       className="quizsummarybtn"
                     >
-                      Test Scores
+                      View Test Scores
                     </button>
                   </div>
                   <div className="wineTitleWrap">
@@ -386,6 +396,7 @@ class EmployeePage extends Component {
         <>
 
         <ScoreSummary 
+        user={this.state.user}
         scores={this.state.user.scores}
         homeButton={this.homeButton}
         />

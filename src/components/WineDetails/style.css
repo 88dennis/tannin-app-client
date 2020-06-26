@@ -14,10 +14,10 @@
       bottom: 0;
       /* background: rgb(54, 53, 53, .1); */
       z-index: 2;
-      cursor: pointer;
+      /* cursor: pointer; */
       transition-delay: 10s;
       transition-timing-function: ease-in;
-      overflow: hidden;
+      /* overflow: auto; */
     }
   
     .winecollectiondiv1 {

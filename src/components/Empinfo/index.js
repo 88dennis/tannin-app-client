@@ -7,7 +7,7 @@ function Empinfo({ showMe4, useId, hideShow4, useEmail, usefirstName, uselastNam
 
     <div>
     {showMe4 ?
-      <div onClick={() => hideShow4(useId)} className="overlay9">
+      <div className="overlay9">
         <div className="empinfowrapper1">
         <div className="empinfowrapper2">
         <div className="empinfowrapper3">
@@ -35,6 +35,8 @@ function Empinfo({ showMe4, useId, hideShow4, useEmail, usefirstName, uselastNam
       <br></br>
       <div className="btn1logoutwrap">
       <button className="btn1logout" onClick={() => handleLogout()}>Logout <i className="fas fa-sign-out-alt"></i></button>
+      <button className="btn1logout" onClick={() => hideShow4(useId)}>Back</button>
+
       </div>
       
     </div>

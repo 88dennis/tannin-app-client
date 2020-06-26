@@ -1,9 +1,9 @@
-.list-group-item p {
+.listGroupDms-item p {
   font-size: 16px;
   list-style-type: none;
 }
 
-.list-group {
+.listGroupDms {
   list-style-type: none;
   padding-left: 15px;
   

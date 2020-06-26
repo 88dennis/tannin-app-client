@@ -1,6 +1,6 @@
 import React from "react";
 import { ListItem } from "../List";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 import "./style.css";
 
@@ -33,7 +33,7 @@ function SavedWine({ name, id, hideShow, goToQuizPage, showMe, wineName, wineTem
 
             <div>
               {showMe ?
-                <div className="overlay5" onClick={() => hideShow(id)}>
+                <div className="overlay5">
                   <div className="wineinfo1">
                     <div className="wineinfo2">
                       <div className="wineinfo3">
@@ -102,7 +102,7 @@ function SavedWine({ name, id, hideShow, goToQuizPage, showMe, wineName, wineTem
                       </div>
                       <br></br>
                       <div className="btnwrap">
-                        <button className="btnwrap1buserclose" onClick={() => hideShow(id)}><i className="fas fa-times-circle"></i></button>
+                        <button className="btn1logout" onClick={() => hideShow(id)}>Back</button>
                       </div>
                     </div>
                   </div>

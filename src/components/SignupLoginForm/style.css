@@ -73,47 +73,6 @@ margin-top:10px;
 margin-bottom:10px;
   }
 
-  input::selection{
-    background-color:  transparent;
-  }
-
-  /* input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
-input:-webkit-autofill:active  {
-background-color: transparent;
-} */
-  
- input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus,
-textarea:-webkit-autofill,
-textarea:-webkit-autofill:hover,
-textarea:-webkit-autofill:focus,
-select:-webkit-autofill,
-select:-webkit-autofill:hover,
-select:-webkit-autofill:focus {
-  border-top-style: none;
-  border-left-style: none;
-  border-right-style: none;
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  background: none;
-  /* -webkit-background-fill-color: rgb(112, 7, 21); */
-  -webkit-text-fill-background-color: rgb(112, 7, 21);
-  /* -webkit-box-shadow: 0 0 0px 0px#000 inset; */
-  transition: background-color 5000s ease-in-out 0s;
-  
-}
-  ::-moz-selection{
-    background-color:  transparent;
-  } 
-    .form-control::-webkit-input-placeholder { color: none; }  /* WebKit, Blink, Edge */
-
-.form-control:-moz-placeholder { color: none; }  /* Mozilla Firefox 4 to 18 */
-.form-control::-moz-placeholder { color: none; }  /* Mozilla Firefox 19+ */
-.form-control:-ms-input-placeholder { color: none; }  /* Internet Explorer 10-11 */
-.form-control::-ms-input-placeholder { color: none; }  /* Microsoft Edge */
 
 
 

@@ -4,13 +4,13 @@ import "./style.css";
 // This component exports both the List and ListItem components
 
 export const List = ({ children }) => (
-  <ul className="list-group">
+  <ul className="listGroupDms">
     {children}
   </ul>
 );
 
 export function ListItem({ children }) {
-  return <li className="list-group-item">{children}
+  return <li className="listGroupDms-item">{children}
   
   </li>;
 }

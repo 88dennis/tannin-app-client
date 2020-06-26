@@ -6,7 +6,6 @@ function Addemployee({ showMe2, homeButton, name, lastName, email,password, hand
   return (
 
     <div>
-
     {/* {showMe2 ? */}
       <div className="overlay1">
         <div className="wrapper1">
@@ -14,6 +13,7 @@ function Addemployee({ showMe2, homeButton, name, lastName, email,password, hand
         <div className="wrapper3">
       <div>
       <div className="newempformtext"> New Employee Form</div>
+
     <form>
       <div className="form-group">
       <div>

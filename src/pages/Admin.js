@@ -72,7 +72,9 @@ class Admin extends Component {
     uselastName: "",
     useEmail: "",
     userestaurantName: "",
-    currentPage:"AdminPage"
+    currentPage:"AdminPage",
+
+    messageEmpExist:"",
   };
 
 
@@ -191,23 +193,41 @@ class Admin extends Component {
     const employeeData = { name: this.state.name, lastName: this.state.lastName, email: this.state.email, password: this.state.password, restaurantId: this.state.user.restaurantId, restaurantName: this.state.user.restaurantName };
     console.log("ADDRESNAME?????");
     console.log(employeeData);
+    let objVals = Object.values(employeeData)
+
+    let checker = function(objValsArr) {
+      for (let i = 0; i < objValsArr.length; i++) {
+      if(objValsArr[i].trim() === "") {
+        return false;
+        }
+      }
+    return true;
+  }
+  console.log(checker(objVals));
+
+  if(checker(objVals)) {
     API.addEmployee(employeeData).then((res) => {
       console.log("ADD Employees");
       console.log(res.data.employee);
       // console.log(res.data.restaurant);
       if (res.data === "Employee already exists") {
-        // this.hideShow2();
+        this.setState({
+          messageEmpExist: employeeData.email + " "  + res.data
+        })
+        alert(this.state.messageEmpExist);
+        this.hideShowEmpForm();
       }
       else {
-        // alert(JSON.stringify(res.data))
+        // let email = res.data.email
+        alert("added " + employeeData.email);
         this.state.employeesList.unshift(res.data.employee)
         this.setState({
           employeesList: this.state.employeesList
         });
+        this.hideShowEmpForm();
         // this.hideShow2();
       }
     });
-
     this.setState({
       name: '',
       lastName: '',
@@ -217,6 +237,11 @@ class Admin extends Component {
       restaurantName:''
     });
     this.homeButton()
+  } else {
+    alert("complete the fields")
+  }
+
+    
   }
 
   handleEmployeeDelete = id => {
@@ -397,14 +422,27 @@ class Admin extends Component {
           <div className="brandCol">
             <div className="welcomebtnwrap">
               <div>
-            <div></div>
-
-                <button
+            <div><button
                   onClick={() => this.hideShow3()}
                   className="welcomebtn"
                 ><Header
                     user={this.state.user} />
-                </button>
+                </button></div>
+
+                
+          <div>
+                 <Userinfo
+          useId={this.state.useId}
+          usefirstName={this.state.usefirstName}
+          uselastName={this.state.uselastName}
+          userestaurantName={this.state.userestaurantName}
+          useEmail = {this.state.useEmail}
+          showMe3={this.state.showMe3}
+          hideShow3={this.hideShow3}
+          handleLogout={this.handleLogout}
+          greet={this.state.greet}
+        ></Userinfo>
+        </div>
 
               </div>
             </div>
@@ -454,7 +492,17 @@ class Admin extends Component {
                     ))}
                   </List>
                 ) : (
-                    <h2 className="text-center">Not Available</h2>
+                   <div className="listitemdiv3">
+          <div className="winecollectiondiv1">
+            <div className="winecollectionname1">
+              <div><button className="winenamebtn1" onClick={()=>this.showMasterWineList()}>ADD WINES</button></div>
+            </div>
+      
+            <div>
+            </div>
+          </div>
+        </div>
+                   
                   )}
               </div>
             </div>
@@ -499,7 +547,25 @@ class Admin extends Component {
                     ))}
                   </List>
                 ) : (
-                    <h2 className="text-center">Add Employees</h2>
+                  
+                   <div className="listitemdiv4">
+          <div className="empnamediv">
+            <div className="empnamecollectionname1">
+              {/* <div className="fontitalicsmall">{name}</div> */}
+              <div>
+                <button className="empnamebtn1" onClick={()=>this.hideShowEmpForm()}>
+                  ADD EMPLOYEES
+                </button>
+              </div>
+           
+            </div>
+
+
+            <div>
+           
+            </div>
+          </div>
+        </div>
                   )}
               </div>
             </div>

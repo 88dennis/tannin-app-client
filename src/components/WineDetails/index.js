@@ -6,7 +6,8 @@ import "./style.css";
 function WineDetails({ homeButton, wineName, wineTemp, wineTannin, wineSweetness, wineSummary, winePronunciation, winePrimaryFlavors, winePairings, wineDecant, wineGlassType, wineBody, wineAlcohol, wineAgeability, wineAcidity, wineVarietal, wineCountry, wineRegion }) {
   return (
     <div>
-      <button onClick={()=>homeButton()}>Home</button>
+    
+      <button className="btn1logout" onClick={()=>homeButton()}>Home</button>
             <div>
                 <div>
                   <div className="restowineinfo1">
@@ -78,7 +79,7 @@ function WineDetails({ homeButton, wineName, wineTemp, wineTannin, wineSweetness
                         >
                           admin
           </Link></button> */}
-      <button onClick={()=> homeButton()}>Home</button>
+      <button className="btn1logout" onClick={()=> homeButton()}>Home</button>
 
 
                       </div>

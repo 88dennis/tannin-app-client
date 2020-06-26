@@ -16,7 +16,7 @@ function EmployeeDetails({
 
   return (
     <div>
-         <button className="btnwrap1buserclose" onClick={() => homeButton()}><i className="fas fa-times-circle"></i></button>
+         <button className="btn1logout" onClick={() => homeButton()}>Back</button>
             <div>
               {/* {showMeEmp ? */}
               <div>

@@ -1,45 +1,3 @@
-  input::selection{
-          background-color:  transparent;
-        } 
-      
-         input:-webkit-autofill,
-      input:-webkit-autofill:hover, 
-      input:-webkit-autofill:focus, 
-      input:-webkit-autofill:active  {
-      background-color: transparent;
-      } 
-        
-       input:-webkit-autofill,
-      input:-webkit-autofill:hover, 
-      input:-webkit-autofill:focus,
-      textarea:-webkit-autofill,
-      textarea:-webkit-autofill:hover,
-      textarea:-webkit-autofill:focus,
-      select:-webkit-autofill,
-      select:-webkit-autofill:hover,
-      select:-webkit-autofill:focus {
-        border-top-style: none;
-        border-left-style: none;
-        border-right-style: none;
-        border-bottom-style: solid;
-        border-bottom-width: 1px;
-         background: none; 
-        /* -webkit-background-fill-color: rgb(112, 7, 21); */
-        -webkit-text-fill-background-color: rgb(112, 7, 21);
-        /* -webkit-box-shadow: 0 0 0px 0px#000 inset; */
-        transition: background-color 5000s ease-in-out 0s;
-        
-      }
-         ::-moz-selection{
-          background-color:  transparent;
-        }  
-          .formcontrol::-webkit-input-placeholder { color: none; }  /* WebKit, Blink, Edge */
-      
-      .formcontrol:-moz-placeholder { color: none; }  /* Mozilla Firefox 4 to 18 */
-      .formcontrol::-moz-placeholder { color: none; }  /* Mozilla Firefox 19+ */
-      .formcontrol:-ms-input-placeholder { color: none; }  /* Internet Explorer 10-11 */
-      .formcontrol::-ms-input-placeholder { color: none; }  /* Microsoft Edge */
-
 .wineandemployeewrapper {
   justify-content: center;
   display: flex;
@@ -90,16 +48,10 @@ display: flex;
 .wineColWrap1 {
   background-color: rgb(228, 118, 118);
   /* background-color: rgb(124, 76, 103); */
-  /* height: 70vh; */
-  max-height: 60vh;
-  min-height: 10vh;
-
+  height: 70vh;
   overflow: auto;
   width: 80%;
   margin-top: 20px;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
-
   border-radius: 10px;
   /* border-style: solid; */
   /* border-width: 10px; */
@@ -115,15 +67,11 @@ display: flex;
 
 .employeeColWrap1 {
   background-color: rgb(130, 156, 80);
-  /* height: 70vh; */
-  max-height: 60vh;
-  min-height: 10vh;
+  height: 70vh;
   overflow: auto;
   width: 80%;
   margin-top: 20px;
   border-radius: 10px;
-  padding-bottom: 10px;
-  /* margin-bottom: 50px; */
   /* border-style: solid;
   border-width: 10px; */
   box-shadow: 5px 6px 6px rgb(49, 46, 46), 0 3px 3px rgb(59, 58, 58);
@@ -306,7 +254,7 @@ flex-direction: column;
 justify-content: center;
 display: flex;
 color: black;
-/* font-family: 'Satisfy', cursive; */
+font-family: 'Satisfy', cursive;
 font-size: 20px;
 }
 .winesheader2 {
@@ -423,9 +371,7 @@ border-style: solid;
 border-top-style: none;
 border-left-style: none;
 border-right-style: none;
-/* font-family: Arial, Helvetica, sans-serif; */
-  font-family: 'Pacifico', cursive;
-
+font-family: Arial, Helvetica, sans-serif;
 
 
 
@@ -472,7 +418,7 @@ margin-top: 50px;
 }
 
 .empwelcomebtn {
-color:black;
+color:white;
 background-color: transparent;
 border-style: none;
 height: 70px;
@@ -483,7 +429,6 @@ font-size: 15px;
 justify-content: center;
 display: flex;
 font-size: 30px;
-margin-top: 50px;
 
 
 
@@ -558,20 +503,18 @@ display: flex;
 .emppageColWrap1 {
     background-color: transparent;
     color: black;
-    /* height: 100vh; */
-    /* overflow: auto; */
+    height: 70vh;
+    overflow: auto;
     width: 60%;
-    min-width: 300px;
 /* 
     border-radius: 30px; */
-    /* border-top-style: solid;
+    border-top-style: solid;
     border-bottom-style: solid;
    border-left: none;
-   border-right: none; */
+   border-right: none;
 
     border-width: 2px;
-    /* border-color: rgb(189, 62, 62); */
-    margin-bottom: 100px;
+    border-color: rgb(189, 62, 62);
 
 }
 
@@ -747,9 +690,7 @@ margin-top: 20px;
 
 
 .wineColWrap1 {
-  max-height: 70vh;
-  min-height: 10vh;
-
+  height: 70vh;
   overflow: auto;
   width: 90%;
   margin-top: 20px;
@@ -774,9 +715,7 @@ margin-top: 20px;
 
 .employeeColWrap1 {
   background-color: rgb(130, 156, 80);
-  max-height: 70vh;
-  min-height: 10vh;
-
+  height: 70vh;
   overflow: auto;
   width:90%;
   margin-top: 20px;
@@ -896,9 +835,7 @@ justify-content: flex-end;
 
 
 .wineColWrap1 {
-max-height: 60vh;
-  min-height: 10vh;
-
+height: 70vh;
 overflow: auto;
 width: 90%;
 margin-top: 20px;
@@ -923,9 +860,7 @@ margin: 0;
 
 .employeeColWrap1 {
 background-color: rgb(130, 156, 80);
-max-height: 70vh;
-  min-height: 10vh;
-
+height: 70vh;
 overflow: auto;
 width:90%;
 margin-top: 20px;
@@ -975,9 +910,7 @@ border-radius: 10px;
 
 
 .wineColWrap1 {
-max-height: 70vh;
-  min-height: 10vh;
-
+height: 70vh;
 overflow: auto;
 width: 90%;
 margin-top: 20px;
@@ -1002,9 +935,7 @@ margin: 0;
 
 .employeeColWrap1 {
 background-color: rgb(130, 156, 80);
-max-height: 60vh;
-  min-height: 10vh;
-
+height: 70vh;
 overflow: auto;
 width:90%;
 margin-top: 20px;
@@ -1118,9 +1049,7 @@ justify-content: flex-end;
 
 
 .wineColWrap1 {
-max-height: 70vh;
-  min-height: 10vh;
-
+height: 70vh;
 overflow: auto;
 width: 90%;
 margin-top: 20px;
@@ -1145,9 +1074,7 @@ margin: 0;
 
 .employeeColWrap1 {
 background-color: rgb(130, 156, 80);
-max-height: 60vh;
-  min-height: 10vh;
-
+height: 70vh;
 overflow: auto;
 width:90%;
 margin-top: 20px;
@@ -1196,9 +1123,7 @@ border-radius: 10px;
 
 
 .wineColWrap1 {
-max-height: 70vh;
-  min-height: 10vh;
-
+height: 70vh;
 overflow: auto;
 width: 90%;
 margin-top: 20px;
@@ -1223,9 +1148,7 @@ margin: 0;
 
 .employeeColWrap1 {
 background-color: rgb(130, 156, 80);
-max-height: 60vh;
-  min-height: 10vh;
-
+height: 70vh;
 overflow: auto;
 width:90%;
 margin-top: 20px;
@@ -1337,11 +1260,7 @@ justify-content: flex-end;
 
 
 .wineColWrap1 {
-
-max-height: 70vh;
-  min-height: 10vh;
-
-
+height: 70vh;
 overflow: auto;
 width: 90%;
 margin-top: 20px;
@@ -1366,9 +1285,7 @@ margin: 0;
 
 .employeeColWrap1 {
 background-color: rgb(130, 156, 80);
-max-height: 60vh;
-  min-height: 10vh;
-
+height: 70vh;
 overflow: auto;
 width:90%;
 margin-top: 20px;
@@ -1416,9 +1333,7 @@ border-radius: 10px;
 
 
 .wineColWrap1 {
-max-height: 70vh;
-  min-height: 10vh;
-
+height: 70vh;
 overflow: auto;
 width: 90%;
 margin-top: 20px;
@@ -1443,9 +1358,7 @@ margin: 0;
 
 .employeeColWrap1 {
 background-color: rgb(130, 156, 80);
-max-height: 60vh;
-  min-height: 10vh;
-
+height: 70vh;
 overflow: auto;
 width:90%;
 margin-top: 20px;
@@ -1559,9 +1472,7 @@ margin-top: 20px;
 
 
 .wineColWrap1 {
-max-height: 60vh;
-  min-height: 10vh;
-
+height: 70vh;
 overflow: auto;
 width: 90%;
 margin-top: 20px;
@@ -1586,9 +1497,7 @@ margin: 0;
 
 .employeeColWrap1 {
 background-color: rgb(130, 156, 80);
-max-height: 60vh;
-  min-height: 10vh;
-
+height: 70vh;
 overflow: auto;
 width:90%;
 margin-top: 20px;
@@ -1642,9 +1551,7 @@ border-radius: 10px;
 
 
 .wineColWrap1 {
-max-height: 60vh;
-  min-height: 10vh;
-
+height: 70vh;
 overflow: auto;
 width: 90%;
 margin-top: 20px;
@@ -1669,9 +1576,7 @@ margin: 0;
 
 .employeeColWrap1 {
 background-color: rgb(130, 156, 80);
-max-height: 60vh;
-  min-height: 10vh;
-
+height: 70vh;
 overflow: auto;
 width:90%;
 margin-top: 20px;
@@ -1783,10 +1688,7 @@ justify-content: flex-end;
 
 
 .wineColWrap1 {
-max-height: 60vh;
-  min-height: 10vh;
-
-
+height: 70vh;
 overflow: auto;
 width: 90%;
 margin-top: 20px;
@@ -1811,9 +1713,7 @@ margin: 0;
 
 .employeeColWrap1 {
 background-color: rgb(130, 156, 80);
-max-height: 60vh;
-  min-height: 10vh;
-
+height: 70vh;
 overflow: auto;
 width:90%;
 margin-top: 20px;
@@ -1862,9 +1762,7 @@ border-radius: 10px;
 
 
 .wineColWrap1 {
-max-height: 60vh;
-  min-height: 10vh;
-
+height: 70vh;
 overflow: auto;
 width: 90%;
 margin-top: 20px;
@@ -1889,9 +1787,7 @@ margin: 0;
 
 .employeeColWrap1 {
 background-color: rgb(130, 156, 80);
-max-height: 60vh;
-  min-height: 10vh;
-
+height: 70vh;
 overflow: auto;
 width:90%;
 margin-top: 20px;
@@ -2003,9 +1899,7 @@ justify-content: flex-end;
 
 
 .wineColWrap1 {
-max-height: 60vh;
-  min-height: 10vh;
-
+height: 70vh;
 overflow: auto;
 width: 90%;
 margin-top: 20px;
@@ -2030,9 +1924,7 @@ margin: 0;
 
 .employeeColWrap1 {
 background-color: rgb(130, 156, 80);
-max-height: 60vh;
-  min-height: 10vh;
-
+height: 70vh;
 overflow: auto;
 width:90%;
 margin-top: 20px;
@@ -2083,9 +1975,7 @@ width: 100%;
 
 
 .wineColWrap1 {
-max-height: 60vh;
-  min-height: 10vh;
-
+height: 70vh;
 overflow: auto;
 width: 90%;
 margin-top: 20px;
@@ -2110,9 +2000,7 @@ margin: 0;
 
 .employeeColWrap1 {
 background-color: rgb(130, 156, 80);
-max-height: 60vh;
-  min-height: 10vh;
-
+height: 70vh;
 overflow: auto;
 width:90%;
 margin-top: 20px;
@@ -2227,9 +2115,7 @@ margin-top: 20px;
 
 
 .wineColWrap1 {
-max-height: 60vh;
-  min-height: 10vh;
-
+height: 70vh;
 overflow: auto;
 width: 90%;
 margin-top: 20px;
@@ -2254,9 +2140,7 @@ margin: 0;
 
 .employeeColWrap1 {
 background-color: rgb(130, 156, 80);
-max-height: 60vh;
-  min-height: 10vh;
-
+height: 70vh;
 overflow: auto;
 width:90%;
 margin-top: 20px;
@@ -2307,9 +2191,7 @@ border-radius: 10px;
 
 
 .wineColWrap1 {
-max-height: 60vh;
-  min-height: 10vh;
-
+height: 70vh;
 overflow: auto;
 width: 90%;
 margin-top: 20px;
@@ -2334,9 +2216,7 @@ margin: 0;
 
 .employeeColWrap1 {
 background-color: rgb(130, 156, 80);
-max-height: 60vh;
-  min-height: 10vh;
-
+height: 70vh;
 overflow: auto;
 width:90%;
 margin-top: 20px;
@@ -2443,9 +2323,7 @@ justify-content: flex-end;
 
 
 .wineColWrap1 {
-max-height: 60vh;
-  min-height: 10vh;
-
+height: 70vh;
 overflow: auto;
 width: 90%;
 margin-top: 20px;
@@ -2470,9 +2348,7 @@ margin: 0;
 
 .employeeColWrap1 {
 background-color: rgb(130, 156, 80);
-max-height: 60vh;
-  min-height: 10vh;
-
+height: 70vh;
 overflow: auto;
 width:90%;
 margin-top: 20px;
@@ -2577,9 +2453,7 @@ justify-content: flex-end;
 
 
 .wineColWrap1 {
-max-height: 60vh;
-  min-height: 10vh;
-
+height: 70vh;
 overflow: auto;
 width: 90%;
 margin-top: 20px;
@@ -2604,9 +2478,7 @@ margin: 0;
 
 .employeeColWrap1 {
 background-color: rgb(130, 156, 80);
-max-height: 60vh;
-  min-height: 10vh;
-
+height: 70vh;
 overflow: auto;
 width:90%;
 margin-top: 20px;

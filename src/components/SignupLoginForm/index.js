@@ -1,11 +1,14 @@
 import React from "react";
 // import { Link } from "react-router-dom";
+// import 'bootstrap/dist/css/bootstrap.css';
+
 import "./style.css";
 
 function SignupLoginForm({ showMe, hideShow, restaurant, firstName, lastName, email, password, loginemail, loginpassword, handleSubmitInputChange, handleSignupFormSubmit, handleLoginInputChange, handleLoginFormSubmit,signupMessage, loginMessage }) {
   return (
 
     <div>
+  
       <div className="loginsignupbtnmainwrap">
       <div className="loginsignupbtnmainwrap2">
       <button className="loginsignupbtnmain" onClick={() => hideShow()}>Log In/ Sign Up</button>
@@ -28,8 +31,7 @@ function SignupLoginForm({ showMe, hideShow, restaurant, firstName, lastName, em
                         <div>
                           <input
                             className="form-control"
-                            // autoComplete="off"
-                            
+                            autoComplete="on"
                             type="text"
                             value={restaurant}
                             // placeholder="Restaurant"
@@ -47,7 +49,7 @@ function SignupLoginForm({ showMe, hideShow, restaurant, firstName, lastName, em
                         <div>
                           <input
                             className="form-control"
-                            autoComplete="off"
+                            autoComplete="on"
                             
                             type="text"
                             value={firstName}
@@ -64,7 +66,7 @@ function SignupLoginForm({ showMe, hideShow, restaurant, firstName, lastName, em
                         <div>
                           <input
                             className="form-control"
-                            
+                            autoComplete="on"
                             type="text"
                             value={lastName}
                             // placeholder="Last Name"
@@ -82,7 +84,7 @@ function SignupLoginForm({ showMe, hideShow, restaurant, firstName, lastName, em
                         <div>
                           <input
                             className="form-control"
-                            
+                            autoComplete="on"
                             type="email"
                             value={email}
                             // placeholder="Email Address"
@@ -97,8 +99,8 @@ function SignupLoginForm({ showMe, hideShow, restaurant, firstName, lastName, em
                         </label>
                         <div>
                           <input
-                            className="form-control"
-                            
+                            className="form-control dms"
+                            autoComplete="on"
                             type="password"
                             value={password}
                             // placeholder="Password"

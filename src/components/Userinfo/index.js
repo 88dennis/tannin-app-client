@@ -37,6 +37,8 @@ function Userinfo({ showMe3, useEmail, useId, hideShow3, usefirstName, uselastNa
 
       <div className="btn1logoutwrap">
       <button className="btn1logout" onClick={() => handleLogout()}>Logout <i className="fas fa-sign-out-alt"></i></button>
+      <button className="btn1logout" onClick={() => hideShow3(useId)}>Back</button>
+    
       </div>
 
 

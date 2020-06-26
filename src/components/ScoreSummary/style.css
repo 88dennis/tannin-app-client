@@ -10,8 +10,25 @@
     bottom: 0;
     /* background: -webkit-gradient(linear, left top, left bottom, from(rgb(248, 252, 250)), to(rgb(102, 42, 42))) fixed; */
     z-index: 2;
-    overflow: hidden;
+    /* overflow: hidden; */
 
+  }
+
+  ul {
+    list-style: none;
+
+  }
+
+  .listGroupDms-item {
+    list-style: none;
+    
+  }
+
+
+  .emppagewinecollectiondiv2 {
+    display:flex;
+    /* justify-content:center; */
+    align-items: center;
   }
   
   .empinfoformtext {
@@ -72,3 +89,22 @@
       
       }
      
+.scoreSummaryMain {
+  margin-top: 30px;
+  justify-content: center;
+  display:flex;
+}
+     .scoreSummaryDiv {
+         width: 50%;
+         min-width: 300px;
+       /* background: pink; */
+
+     }
+
+     .scoreList {
+         width: 100%;
+       text-align:center;
+       /* background: gray; */
+       font-family: 'Special Elite', cursive;
+
+     }

@@ -12,7 +12,7 @@ import questions from "../questions.json";
 //importing css stylings
 import './style.css';
 
-console.log(questions)
+// console.log(questions)
 class Quiz extends Component {
 
   state = {
@@ -253,6 +253,8 @@ class Quiz extends Component {
       console.log(res.data.scores);
       // this.props.history.push('/employeepage');
     })
+
+    
   }
 
   // renders react elements into the DOM
@@ -313,13 +315,13 @@ class Quiz extends Component {
 
         <div className="submitanswersbtnquizwrap">
           <div className="submitanswersbtnquiz">
-            <button className="submitFinal" onClick={this.handleScoreCalc}>Submit Answers</button>
+            <button className="submitFinal" onClick={this.handleScoreCalc}>Submit</button>
 
             {/* <Link onClick={()=>{this.props.homeButton()}} to="/employeepage"><button className="closebtnquiz">maybe next time
             </button></Link>
              */}
 
-        <button onClick={()=>{this.props.homeButtonWithReload()}} className="closebtnquiz">maybe next time
+        <button onClick={()=>{this.props.homeButtonWithReload()}} className="closebtnquiz">Close
             </button>
           </div>
         </div>

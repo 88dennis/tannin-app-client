@@ -1,7 +1,9 @@
 import React from "react";
 import "./style.css";
+import Color from "../Color";
 
-// class component QuestionCard(props) {
+
+
 class QuestionCard extends React.Component {
 
     handleBtnDis = (event) => {
@@ -28,11 +30,14 @@ class QuestionCard extends React.Component {
     };
 
     answers = this.props.answers;
-    // ans = console.log(this.answers)
+    
     falses = this.answers ? this.answers.splice(this.answers.indexOf(this.props[this.props.category]), 1) : null;
     // ans = console.log(this.falses)
     shuffledFalses = this.answers ? this.props.shuffle(this.answers) : null;
-    selections = this.answers ? (this.answers.slice(0, 3)) : null;
+    // selections = this.answers ? (this.answers.slice(0, 4)) : null;
+
+    selections = this.answers ? this.answers : null;
+
     dummThing = this.selections ? (this.selections.push(this.props[`${this.props.category}`])) : null;
     shuffledSelections = this.selections ? this.props.shuffle(this.selections) : null;
 
@@ -61,11 +66,21 @@ class QuestionCard extends React.Component {
                 '#c8f7c5',
             ],
             selectedColor: '',
+             colorsNum: 1,
+            colors: [],
+            // hexCode
         };
+
+       for (let i = 0; i < this.state.colorsNum; i +=1) {
+      this.state.colors.push({hexCode: this.generateColor()});
+    }
     }
 
     componentDidMount() {
         this._getRandomColor()
+        console.log(this.props)
+        // this.generateColor()
+        // this.updateColor(this.state.index)
     }
 
     _getRandomColor() {
@@ -76,11 +91,29 @@ class QuestionCard extends React.Component {
     }
 
 
-    render() {
-        return (
-            <div className="qcard" style={{ backgroundColor: this.state.selectedColor}}>
-                <div className="qcard2">
+  generateColor () {
+    return '#' +  Math.random().toString(16).substr(-6);
+  }
+  
+  updateColor (index) {
+    let colors = this.state.colors.slice();
+    const currentColor = this.generateColor();
+    colors[index].hexCode = currentColor;
+    this.setState({
+      colors : colors
+    });
+ }
 
+    render() {
+        console.log(this.answers);
+        return (
+            <>
+            <div className="color-container">
+        { this.state.colors.map((color, index) => <Color key={`color-${index}`} index={index} update={this.updateColor.bind(this)} hexCode={color.hexCode}>
+        
+        
+            <div className="qcard" style={{ backgroundColor: "transparent"}}>
+                <div className="qcard2">
                     <h2 className="questionName">{this.props.question}{this.props.wineName}?</h2>
                     {/* If false answers are available, render button for each answer, else render a submit (specifically for the flavors question) */}
                     <div>
@@ -145,6 +178,11 @@ class QuestionCard extends React.Component {
                     </div>
                 </div>
             </div>
+        
+        </Color>) }
+      </div>
+
+            </>
         );
     }
 }
