@@ -43,7 +43,7 @@ function EmployeeDetails({
                                 =
                                 <span className="input-label">
                                   {" "}
-                                  {score.score}%
+                                  {parseInt(score.score).toFixed(2)}%
                                 </span>
                               </li>
                             </div>
