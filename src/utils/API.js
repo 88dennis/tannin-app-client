@@ -3,7 +3,6 @@ import axios from "axios";
 export default {
 
   //LOCAL ROUTES
-  // ------------------------------------------------------
   // signUpSubmit: function (userInfo) {
   //   console.log(userInfo);
   //   return axios.post("http://localhost:3005/api/user/signup", userInfo);
@@ -75,8 +74,6 @@ export default {
     console.log(curPage);
     return axios.get('https://tanninwineapp.herokuapp.com/api/admin/' + userId.userId + "/"+ curPage.currentPage);
   },
-
-  
 
   getMaster: function (q) {
     return axios.get("https://tanninwineapp.herokuapp.com/api/wine/");

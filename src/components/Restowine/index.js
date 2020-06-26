@@ -4,7 +4,7 @@ import { ListItem } from "../List";
 
 import "./style.css";
 
-function Restowine({ handleWineDelete, name, id, hideShow}) {
+function Restowine({ handleWineDelete, name, id, hideShow }) {
   return (
     <div>
       <ListItem>
@@ -12,8 +12,19 @@ function Restowine({ handleWineDelete, name, id, hideShow}) {
           <div className="winecollectiondiv1">
             <div className="winecollectionname1">
               {/* <div className="fontitalicsmall">{name}</div> */}
-              <div><button className="winenamebtn1" onClick={() => hideShow(id)}>{name}</button></div>
-              <div><button className="winedelbtn" onClick={() => handleWineDelete(id)}><i className="fas fa-minus-circle"></i></button></div>
+              <div>
+                <button className="winenamebtn1" onClick={() => hideShow(id)}>
+                  {name}
+                </button>
+              </div>
+              <div>
+                <button
+                  className="winedelbtn"
+                  onClick={() => handleWineDelete(id)}
+                >
+                  <i className="fas fa-minus-circle"></i>
+                </button>
+              </div>
             </div>
             {/* <div><Link
             className="nav-link" 
@@ -23,15 +34,7 @@ function Restowine({ handleWineDelete, name, id, hideShow}) {
             </button>
               </Link></div> */}
             <div className="fontitalicbarcode">Product Id: {id}</div>
-            <div>
-           
-            </div>
-
-
-
-
-
-
+            <div></div>
           </div>
         </div>
       </ListItem>

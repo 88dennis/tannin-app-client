@@ -13,10 +13,7 @@ import { List } from "../components/List";
 import "./style.css";
 import Quiz from "./Quiz";
 
-
 class EmployeePage extends Component {
-
-
   state = {
     wineCollections: [],
     scoreCollection: [],
@@ -66,13 +63,10 @@ class EmployeePage extends Component {
     scoreId: "",
     testmessage: "",
     currentPage: "EmployeePage",
-    wineData:""
+    wineData: "",
   };
 
   componentDidMount() {
-
-
-
     let userId = {
       userId: this.props.match.params.userId,
     };
@@ -84,15 +78,14 @@ class EmployeePage extends Component {
     console.log(this.props.match.params);
   }
   hideShowSummary = (id) => {
-
     const newState = { ...this.state };
 
-// alert(this.state.user._id)
+    // alert(this.state.user._id)
 
     newState.empuseId = newState.user._id;
     newState.newScores = newState.scoreCollection;
     newState.showMeSummary = !newState.showMeSummary;
-    newState.currentPage = "ScoreSummary"
+    newState.currentPage = "ScoreSummary";
 
     this.setState(newState);
     // console.log('HEHEHEHEHEHE')
@@ -107,7 +100,7 @@ class EmployeePage extends Component {
         console.log(response.data);
         this.setState({
           loggedIn: true,
-          user: response.data,  
+          user: response.data,
         });
         this.getSavedWine();
       } else {
@@ -164,10 +157,9 @@ class EmployeePage extends Component {
       // this.props.history.push(`/`);
       this.props.history.replace({
         pathname: "/",
-        state: null
-    })
+        state: null,
+      });
       // console.log(this.state);
-
     });
   };
 
@@ -231,37 +223,42 @@ class EmployeePage extends Component {
   //   console.log(newState.newScore)
   // }
   // ----------
-  homeButton =() =>{
+  homeButton = () => {
     // window.location.reload(false)
     // this.componentDidMount();
     this.setState({
-      currentPage: "EmployeePage"
-    })
-  }
+      currentPage: "EmployeePage",
+    });
+  };
 
-  homeButtonWithReload =() =>{
-    window.location.reload(false)
+  homeButtonWithReload = () => {
+    window.location.reload(false);
     // this.componentDidMount();
     this.setState({
-      currentPage: "EmployeePage"
-    })
-  }
+      currentPage: "EmployeePage",
+    });
+  };
 
   goToQuizPage = (id) => {
-    const newState = { ...this.state }
+    const newState = { ...this.state };
     const wine = this.state.wineCollections.find((wine) => wine._id === id);
     newState.wineData = wine;
-    newState.currentPage =  "QuizPage";
+    newState.currentPage = "QuizPage";
     this.setState(newState);
-  } 
+  };
 
   renderPage = () => {
     if (this.state.currentPage === "EmployeePage") {
       return (
         <>
           <Container>
-          <div className="btnLogoutWrapper">
-      <button className="btn1logout" onClick={() => this.handleLogout()}>Logout <i className="fas fa-sign-out-alt"></i></button>
+            <div className="btnLogoutWrapper">
+              <button
+                className="btn1logout"
+                onClick={() => this.handleLogout()}
+              >
+                Logout <i className="fas fa-sign-out-alt"></i>
+              </button>
             </div>
             <div className="emppagemainwrap">
               <Empinfo
@@ -296,7 +293,9 @@ class EmployeePage extends Component {
                       onClick={() => this.hideShow4()}
                       className="empwelcomebtn"
                     >
-                    {this.state.user === null ? "welcome" : this.state.user.firstName}
+                      {this.state.user === null
+                        ? "welcome"
+                        : this.state.user.firstName}
                     </button>
                   </div>
                   <div className="quizsummarybtnwrap">
@@ -390,22 +389,22 @@ class EmployeePage extends Component {
       return (
         <>
           <Quiz
-              user={this.state.user}
-              homeButtonWithReload={this.homeButtonWithReload}
-              wineData={this.state.wineData}
-          />;
+            user={this.state.user}
+            homeButtonWithReload={this.homeButtonWithReload}
+            wineData={this.state.wineData}
+          />
+          ;
         </>
       );
     } else if (this.state.currentPage === "ScoreSummary") {
       return (
         <>
-
-        <ScoreSummary 
-        user={this.state.user}
-        scores={this.state.user.scores}
-        homeButton={this.homeButton}
-        />
-                      {/* <List>
+          <ScoreSummary
+            user={this.state.user}
+            scores={this.state.user.scores}
+            homeButton={this.homeButton}
+          />
+          {/* <List>
                         {this.state.scoreCollection.map((score) => (
                           <ScoreSummary
                             key={score._id}
@@ -418,14 +417,12 @@ class EmployeePage extends Component {
                           />
                         ))}
                       </List> */}
-                    
         </>
       );
     }
   };
 
   render() {
-
     return <>{this.renderPage()}</>;
   }
 }

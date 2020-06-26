@@ -3,17 +3,50 @@ import { ListItem } from "../List";
 
 import "./style.css";
 
-function Wine({ name, id, hideShowWineMasterDetail, hideShow, showMe, handleWineAdd, wineName, wineTemp, wineTannin, wineSweetness, wineSummary, winePronunciation, winePrimaryFlavors, winePairings, wineDecant, wineGlassType, wineBody, wineAlcohol, wineAgeability, wineAcidity, wineVarietal, wineCountry, wineRegion }) {
-
-
+function Wine({
+  name,
+  id,
+  hideShowWineMasterDetail,
+  hideShow,
+  showMe,
+  handleWineAdd,
+  wineName,
+  wineTemp,
+  wineTannin,
+  wineSweetness,
+  wineSummary,
+  winePronunciation,
+  winePrimaryFlavors,
+  winePairings,
+  wineDecant,
+  wineGlassType,
+  wineBody,
+  wineAlcohol,
+  wineAgeability,
+  wineAcidity,
+  wineVarietal,
+  wineCountry,
+  wineRegion,
+}) {
   return (
     <div>
       <ListItem>
         <div className="listitemdiv">
           <div className="winenamediv">
             <div className="winenamediv2">
-              <div><button className="winenamebtn" onClick={() => hideShowWineMasterDetail(id)}>{name}</button></div>
-              <div><button className="btnadd" onClick={() => handleWineAdd(id)}><i className="fa fa-plus-circle fa-2x" aria-hidden="true"></i></button></div>
+              <div>
+                <button
+                  className="winenamebtn"
+                  onClick={() => hideShowWineMasterDetail(id)}
+                >
+                  {name}
+                </button>
+              </div>
+              <div>
+                <button className="btnadd" onClick={() => handleWineAdd(id)}>
+                  <i className="fa fa-plus-circle fa-2x" aria-hidden="true"></i>
+                </button>
+              </div>
             </div>
 
             <div className="fontitalicbarcode">{id}</div>
@@ -97,17 +130,10 @@ function Wine({ name, id, hideShowWineMasterDetail, hideShow, showMe, handleWine
                 : null
               }
             </div> */}
-
-
           </div>
         </div>
-
-
       </ListItem>
-
-
     </div>
-
   );
 }
 
