@@ -265,8 +265,22 @@ class Quiz extends Component {
 
     console.log(this.state.filteredQs)
     return (
+
       // the parent div into which our components will be rendered
       <div className="background">
+
+<div className="submitanswersbtnquizwrap">
+          <div className="submitanswersbtnquiz">
+            <button className="submitFinal" onClick={this.handleScoreCalc}>Submit</button>
+
+            {/* <Link onClick={()=>{this.props.homeButton()}} to="/employeepage"><button className="closebtnquiz">maybe next time
+            </button></Link>
+             */}
+
+        <button onClick={()=>{this.props.homeButtonWithReload()}} className="closebtnquiz">Close
+            </button>
+          </div>
+        </div>
 
         <Wrapper>
           

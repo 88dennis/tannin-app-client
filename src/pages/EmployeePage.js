@@ -161,8 +161,13 @@ class EmployeePage extends Component {
         loggedIn: false,
         user: null,
       });
-      this.props.history.push(`/`);
-      console.log(this.state);
+      // this.props.history.push(`/`);
+      this.props.history.replace({
+        pathname: "/",
+        state: null
+    })
+      // console.log(this.state);
+
     });
   };
 

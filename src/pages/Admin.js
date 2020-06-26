@@ -381,8 +381,15 @@ class Admin extends Component {
         loggedIn: false,
         user: null,
       })
-      this.props.history.push(`/`);
+      // this.props.history.push(`/`);
+      this.props.history.replace({
+        pathname: "/",
+        state: null
     });
+    });
+
+    // this.setState(newState)
+    
   };
 
   renderPage = () => {
